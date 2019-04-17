@@ -1,22 +1,19 @@
 <template>
-  <div class="modal-warp">
-    <button @click="open">处理</button>
-    <div class="modal-cover" v-show="show" @click="close">
-      <!-- 可以使用事件修饰符  .stop 阻止事件冒泡(写到弹窗元素上)  也可以使用 .self(写到最大盒蒙层上) 该事件只是点击了事件绑定元素本体才出发 -->
-      <div class="modal" @click.stop>
-        <div class="modal-header">
-          <h3>{{title}}</h3>
-          <span @click="close">X</span>
-        </div>
-        <div class="modal-content">
-          <p>{{content[0]}}</p>
-          <p>{{content[1]}}</p>
-          <p>{{content[2]}}</p>
-        </div>
-        <div class="modal-btn">
-          <button @click="cancle">取消</button>
-          <button @click="confirm">确定</button>
-        </div>
+  <div class="modal-cover" v-show="show" @click="close">
+    <!-- 可以使用事件修饰符  .stop 阻止事件冒泡(写到弹窗元素上)  也可以使用 .self(写到最大盒蒙层上) 该事件只是点击了事件绑定元素本体才出发 -->
+    <div class="modal" @click.stop>
+      <div class="modal-header">
+        <h3>{{title}}</h3>
+        <span @click="close">X</span>
+      </div>
+      <div class="modal-content">
+        <p>{{content[0]}}</p>
+        <p>{{content[1]}}</p>
+        <p>{{content[2]}}</p>
+      </div>
+      <div class="modal-btn">
+        <button @click="cancle">取消</button>
+        <button @click="confirm">确定</button>
       </div>
     </div>
   </div>
@@ -25,11 +22,6 @@
 <script>
 export default {
   name: "modal",
-  data() {
-    return {
-      show: false
-    };
-  },
   props: {
     title: {
       type: String,
@@ -43,20 +35,26 @@ export default {
       type: Function,
       required: true
     },
-    clickEvent: {
+    confirmEvent: {
+      type: Function,
+      required: true
+    },
+    show: {
+      type: Boolean,
+      required: true
+    },
+    close: {
       type: Function,
       required: true
     }
   },
   methods: {
-    close() {
-      this.show = false;
-    },
-    open() {
-      this.show = true;
-    },
     cancle() {
       this.cancleEvent();
+      this.close();
+    },
+    confirm() {
+      this.confirmEvent();
       this.close();
     }
   }
@@ -64,9 +62,6 @@ export default {
 </script>
 
 <style>
-/* .modal-wrap > button{
-
-  } */
 .modal-cover {
   width: 100%;
   height: 100%;
