@@ -1,10 +1,10 @@
 <template>
-  <div class="modal-cover" v-show="show" @click="close">
+  <div class="modal-cover" v-show="show" @click="$emit('close')">
     <!-- 可以使用事件修饰符  .stop 阻止事件冒泡(写到弹窗元素上)  也可以使用 .self(写到最大盒蒙层上) 该事件只是点击了事件绑定元素本体才出发 -->
     <div class="modal" @click.stop>
       <div class="modal-header">
         <h3>{{title}}</h3>
-        <span @click="close">X</span>
+        <span @click="$emit('close')">X</span>
       </div>
       <div class="modal-content">
         <p>{{content[0]}}</p>
@@ -42,20 +42,16 @@ export default {
     show: {
       type: Boolean,
       required: true
-    },
-    close: {
-      type: Function,
-      required: true
     }
   },
   methods: {
     cancle() {
       this.cancleEvent();
-      this.close();
+      this.$emit("close");
     },
     confirm() {
       this.confirmEvent();
-      this.close();
+      this.$emit("close");
     }
   }
 };
