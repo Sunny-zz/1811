@@ -9,7 +9,15 @@
       :confirmEvent="confirm"
       :show="show"
       @close="close"
-    />
+    >
+      <p class="xxx">xxx</p>
+      <p>xxx</p>
+      <p>xxx</p>
+      <p>xxx</p>
+      <template #mid-title>
+        <span>xxx</span>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -22,6 +30,17 @@
 //  子组件内使用 $emit
 // templete 中写法: $emit('名')
 // js中 写法: this.$emit('名')
+// 当我们想要传递给组件一些结构(标签) 让他展示，需要在父组件内使用子组件的时候，将这些结构写在两个组件名标签内，子组件内部使用 <slot></slot> 接收并使用
+// slot 有两种使用方式
+// 1.无名插槽
+// 上述方式就属于无名插槽
+// 2.具名插槽
+// // 在父组件内写到 template 标签内并且需要使用 v-slot 指令
+// 例如: <template v-slot:mid-title>
+//         <span>xxx</span>
+//       </template>
+// 可以简写成 #mid-title
+// 在子组件内使用 <slot name='mid-title'></slot>
 import Modal from "./components/Modal";
 import Button from "./components/Button";
 export default {

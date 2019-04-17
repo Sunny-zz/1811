@@ -4,12 +4,12 @@
     <div class="modal" @click.stop>
       <div class="modal-header">
         <h3>{{title}}</h3>
+        <slot name="mid-title"></slot>
         <span @click="$emit('close')">X</span>
       </div>
       <div class="modal-content">
-        <p>{{content[0]}}</p>
-        <p>{{content[1]}}</p>
-        <p>{{content[2]}}</p>
+        <!-- 展示父组件传递过来的标签 -->
+        <slot></slot>
       </div>
       <div class="modal-btn">
         <button @click="cancle">取消</button>
@@ -26,10 +26,6 @@ export default {
     title: {
       type: String,
       default: "title"
-    },
-    content: {
-      type: Array,
-      default: ["Some contents...", "Some contents...", "Some contents..."]
     },
     cancleEvent: {
       type: Function,
