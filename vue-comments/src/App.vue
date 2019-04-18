@@ -35,7 +35,7 @@ export default {
       // 现在我们的需求: 页面中出现这个组件的时候就会获取数据
       // null 代表的是请求未结束的 comments 的值 不写成 空数组，空数组判断不出来是否请求结束。
       // 请求结束之后 comments 肯定变成了 数组
-      // 使用该值是否是数组或者 null 来区分请求是否结束
+      // 使用 该值是否是 数组或者 null 来区分请求是否结束
       comments: null
     };
   },
@@ -80,6 +80,11 @@ export default {
       // 页面添加一条评论，修改 comments 数组
       // console.log(new Date().getTime());
       // date  日期    格林威治时间
+
+      // 添加评论
+      // 1. 先更新网上的 请求
+      // 2. 更新本地的 使用请求成功回来的数据更新本地   请求成功
+      // 3. 删除输入框   请求成功
       console.log();
       if (val.trim()) {
         this.comments.unshift({
@@ -96,6 +101,9 @@ export default {
       // this.comments.splice(index, 1);
       // console.log(id);
       // filter 生成新的数组  xxx
+      // 添加评论
+      // 1. 先更新网上的 请求   axios.delete('地址/id')
+      // 2. 更新本地的    请求成功
       this.comments = this.comments.filter(comment => comment.id != id);
       // this.comments = this.comments.reduce((newArr, comment) => {
       //   if (comment.id != id) {
