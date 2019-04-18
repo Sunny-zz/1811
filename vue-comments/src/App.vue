@@ -4,9 +4,9 @@
     <button @click="addComment">提交评论</button>
     <div v-if="!comments.length">空</div>
     <ul v-else>
-      <li v-for="(comment,index) in comments" :key="comment.id">
+      <li v-for="(comment) in comments" :key="comment.id">
         {{comment.text}}
-        <button @click="delComment(index)">删除</button>
+        <button @click="delComment(comment.id)">删除</button>
       </li>
     </ul>
   </div>
@@ -43,17 +43,21 @@ export default {
       // 页面添加一条评论，修改 comments 数组
       console.log(this.val);
       this.comments.unshift({
-        id: this.comments.length + 1,
+        id: Math.random(),
         text: this.val
       });
       this.val = "";
     },
-    delComment(index) {
+    delComment(id) {
       // 页面删除一条评论，修改 comments 数组
       // splice(a,b,c)
       // 最好这种添加删除的操作要找到具体某一个元素的时候使用 id 最合适
-      console.log(index);
-      this.comments.splice(index, 1);
+      // console.log(index);
+      // this.comments.splice(index, 1);
+      // console.log(id);
+      // filter 生成新的数组  xxx
+      this.comments = this.comments.filter(comment => comment.id != id);
+      // indexOf 只能针对非对象数组
     }
   }
 };
