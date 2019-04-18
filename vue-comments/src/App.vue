@@ -56,7 +56,13 @@ export default {
       // this.comments.splice(index, 1);
       // console.log(id);
       // filter 生成新的数组  xxx
-      this.comments = this.comments.filter(comment => comment.id != id);
+      // this.comments = this.comments.filter(comment => comment.id != id);
+      this.comments = this.comments.reduce((newArr, comment) => {
+        if (comment.id != id) {
+          newArr.push(comment);
+        }
+        return newArr;
+      }, []);
       // indexOf 只能针对非对象数组
     }
   }
