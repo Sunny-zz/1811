@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="val">
+    <input type="text" v-model.lazy="val">
     <button @click="add">提交评论</button>
   </div>
 </template>
