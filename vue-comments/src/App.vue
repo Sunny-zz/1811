@@ -1,18 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="val">
-    <button @click="addComment">提交评论</button>
-    <div v-if="!comments.length">空</div>
-    <ul v-else>
-      <li v-for="(comment) in comments" :key="comment.id">
-        {{comment.text}}
-        <button @click="delComment(comment.id)">删除</button>
-      </li>
-    </ul>
+    <CommentForm @addComment="addComment"/>
+    <CommentList :comments="comments" @delComment="delComment"/>
   </div>
 </template>
 
 <script>
+import CommentForm from "./components/CommentForm";
+import CommentList from "./components/CommentList";
 export default {
   name: "app",
   data() {
@@ -34,19 +29,22 @@ export default {
           id: 4,
           text: "sasda3"
         }
-      ],
-      val: ""
+      ]
     };
   },
+  components: {
+    CommentForm,
+    CommentList
+  },
   methods: {
-    addComment() {
+    addComment(val) {
       // 页面添加一条评论，修改 comments 数组
-      console.log(this.val);
+      // console.log(new Date().getTime());
       this.comments.unshift({
-        id: Math.random(),
-        text: this.val
+        // date  日期    格林威治时间
+        id: new Date().getTime(),
+        text: val
       });
-      this.val = "";
     },
     delComment(id) {
       // 页面删除一条评论，修改 comments 数组
@@ -56,13 +54,13 @@ export default {
       // this.comments.splice(index, 1);
       // console.log(id);
       // filter 生成新的数组  xxx
-      // this.comments = this.comments.filter(comment => comment.id != id);
-      this.comments = this.comments.reduce((newArr, comment) => {
-        if (comment.id != id) {
-          newArr.push(comment);
-        }
-        return newArr;
-      }, []);
+      this.comments = this.comments.filter(comment => comment.id != id);
+      // this.comments = this.comments.reduce((newArr, comment) => {
+      //   if (comment.id != id) {
+      //     newArr.push(comment);
+      //   }
+      //   return newArr;
+      // }, []);
       // indexOf 只能针对非对象数组
     }
   }
