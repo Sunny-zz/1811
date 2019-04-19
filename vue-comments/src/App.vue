@@ -7,7 +7,10 @@
     <!-- 如何复制一个数组 -->
     <!-- 数组的 slice(0) -->
     <!-- 使用 es6 的 扩展运算符 ... -->
-    <CommentList v-else :comments="[...comments].reverse()" @delComment="delComment"/>
+    <!-- vue 组件将 template 称作渲染函数，该渲染函数组件出现在页面就会执行，当组件更新 data 的时候也会重新执行跟 data 相关的部分页面,所以我们在 template 中不能对 data 进行修改，如果修改了 -->
+    <!-- vue 提倡不需要 template 中对数据进行处理操作,template 中写的就是展示数据 -->
+    <!-- 需要针对data生成一个新的展示的数据 vue 提供了一个属性 computed 在导出的对象内,帮助我们处理这类事情  computed 叫做计算属性 -->
+    <CommentList v-else :comments="reverseComments" @delComment="delComment"/>
   </div>
 </template>
 
@@ -49,6 +52,13 @@ export default {
       // 使用 该值是否是 数组或者 null 来区分请求是否结束
       comments: null
     };
+  },
+  computed: {
+    // computed 属性是一个对象类型，对象下写的都是方法，每一个方都需要返回值当作计算之后的属性 ，方法函数只能写成普通函数
+    // 也就是相当于另一种 data
+    reverseComments() {
+      return [...this.comments].reverse();
+    }
   },
   beforeCreate() {
     // 标签什么的再页面中都没有内
