@@ -3,7 +3,11 @@
     <h1 class="test">评论 Demo</h1>
     <CommentForm @addComment="addComment"/>
     <div v-if="!comments">请稍等...</div>
-    <CommentList v-else :comments="comments" @delComment="delComment"/>
+    <!-- 使用复制的数组进行颠倒展示  -->
+    <!-- 如何复制一个数组 -->
+    <!-- 数组的 slice(0) -->
+    <!-- 使用 es6 的 扩展运算符 ... -->
+    <CommentList v-else :comments="[...comments].reverse()" @delComment="delComment"/>
   </div>
 </template>
 
@@ -25,6 +29,13 @@ import shortId from "shortid";
 import axios from "axios";
 import CommentForm from "./components/CommentForm";
 import CommentList from "./components/CommentList";
+// arr 是对象类型
+
+// let arr = [1, 2, 3];
+// let arr1 = [...arr];
+// arr1.push(4);
+// console.log(arr);
+
 export default {
   name: "app",
   data() {
@@ -47,6 +58,13 @@ export default {
     // 这个生命周期内就可以更新 data 了
     // 发送请求获取数据更新 data
     // axios.get("地址").then(function(res) {成功的回调  res 代表请求的结果}).catch(function(err){失败的回调 err失败的消息})
+    // 获取后台数据时间顺序是时间早的在前面
+    // 页面中展示的话需要把最新的数据展示到最前面
+    //  reverse 颠倒数组
+    // let arr = [1, 2, 3];
+    // let newArr = arr.reverse();
+    // console.log(arr);
+    // console.log(newArr);
     axios.get("http://localhost:3008/comments").then(res => {
       // console.log(res.data);
       setTimeout(() => {
@@ -95,7 +113,7 @@ export default {
           .post("http://localhost:3008/comments", { text: val })
           .then(res => {
             console.log("请求成功");
-            this.comments.unshift(res.data);
+            this.comments.push(res.data);
             console.log("清空");
             callback();
           });
@@ -112,7 +130,16 @@ export default {
       // 添加评论
       // 1. 先更新网上的 请求   axios.delete('地址/id')
       // 2. 更新本地的    请求成功
-      this.comments = this.comments.filter(comment => comment.id != id);
+      axios
+        .delete(`http://localhost:3008/comments/${id}`)
+        .then(res => {
+          console.log(res.data);
+          this.comments = this.comments.filter(comment => comment.id != id);
+        })
+        .catch(function() {
+          // 请求的地址出错
+          console.log("出错了");
+        });
       // this.comments = this.comments.reduce((newArr, comment) => {
       //   if (comment.id != id) {
       //     newArr.push(comment);
