@@ -41,7 +41,7 @@ export default {
   },
   beforeCreate() {
     // 标签什么的再页面中都没有内
-    console.log("我是生命周期函数 beforeCreate 我在该组件要出现在页面前触发");
+    // console.log("我是生命周期函数 beforeCreate 我在该组件要出现在页面前触发");
   },
   created() {
     // 这个生命周期内就可以更新 data 了
@@ -53,30 +53,30 @@ export default {
         this.comments = res.data;
       }, 1000);
     });
-    console.log(
-      "我是生命周期函数 created 我是组件处理完虚拟 dom 以及组件的 data 之后执行的"
-    );
+    // console.log(
+    //   "我是生命周期函数 created 我是组件处理完虚拟 dom 以及组件的 data 之后执行的"
+    // );
   },
   beforeMount() {
-    console.log("我是生命周期函数 beforeMount ");
+    // console.log("我是生命周期函数 beforeMount ");
   },
   mounted() {
     // 获取该组件内的真实 dom  原生dom结构  使用 jq 做一些事情
-    console.log("我是生命周期函数 mounted 组件中的结构完全在浏览器中展示");
+    // console.log("我是生命周期函数 mounted 组件中的结构完全在浏览器中展示");
   },
   beforeUpdate() {
     // 进行判断阻止更新
-    console.log("我是生命周期函数 beforeUpdate 组件更新数据的时候触发");
+    // console.log("我是生命周期函数 beforeUpdate 组件更新数据的时候触发");
   },
   updated() {
-    console.log("我是生命周期函数 updated 组件更新数据完毕的时候触发");
+    // console.log("我是生命周期函数 updated 组件更新数据完毕的时候触发");
   },
   components: {
     CommentForm,
     CommentList
   },
   methods: {
-    addComment(val) {
+    addComment(val, callback) {
       // 页面添加一条评论，修改 comments 数组
       // console.log(new Date().getTime());
       // date  日期    格林威治时间
@@ -85,12 +85,20 @@ export default {
       // 1. 先更新网上的 请求
       // 2. 更新本地的 使用请求成功回来的数据更新本地   请求成功
       // 3. 删除输入框   请求成功
-      console.log();
+      // console.log();
       if (val.trim()) {
-        this.comments.unshift({
-          id: shortId(),
-          text: val
-        });
+        // this.comments.unshift({
+        //   id: shortId(),
+        //   text: val
+        // });
+        axios
+          .post("http://localhost:3008/comments", { text: val })
+          .then(res => {
+            console.log("请求成功");
+            this.comments.unshift(res.data);
+            console.log("清空");
+            callback();
+          });
       }
     },
     delComment(id) {
@@ -115,7 +123,7 @@ export default {
     }
   }
 };
-</script>
+</script> 
 
 <style>
 </style>
