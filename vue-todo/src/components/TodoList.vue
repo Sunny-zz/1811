@@ -1,8 +1,11 @@
 <template>
   <ul v-if="todos.length">
     <li v-for="todo in todos" :key="todo.id">
-      <!-- <span :class="{done: todo.done}">{{todo.todo}}</span> -->
-      <span :class="todo.done?'done': ''">{{todo.todo}}</span>
+      <!-- <span :class="{done: todo.completed}">{{todo.todo}}</span> -->
+      <span
+        @click="$emit('changeCompleted',todo.id)"
+        :class="todo.completed?'done': ''"
+      >{{todo.todo}}</span>
       <button>删除</button>
     </li>
   </ul>
@@ -17,6 +20,10 @@ export default {
 </script>
 
 <style>
+span {
+  cursor: pointer;
+  user-select: none;
+}
 .done {
   text-decoration: line-through;
 }
