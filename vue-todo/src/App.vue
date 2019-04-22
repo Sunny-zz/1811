@@ -8,7 +8,11 @@
       :todos="todos"
       :filterType="filterType"
     />
-    <TodoFooter @changeFilterType="changeFilterType"/>
+    <TodoFooter
+      :todos="todos"
+      @changeFilterType="changeFilterType"
+      @clearCompleted="clearCompleted"
+    />
   </div>
 </template>
 <script>
@@ -41,7 +45,7 @@ export default {
           completed: false
         }
       ],
-      filterType: "completed"
+      filterType: "all"
     };
   },
   methods: {
@@ -69,6 +73,9 @@ export default {
     },
     changeFilterType(type) {
       this.filterType = type;
+    },
+    clearCompleted() {
+      this.todos = this.todos.filter(todo => !todo.completed);
     }
   }
 };

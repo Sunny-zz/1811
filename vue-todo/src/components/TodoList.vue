@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="todos.length">
+  <ul class="list" v-if="todos.length">
     <li v-for="todo in currentTodos" :key="todo.id">
       <!-- <span :class="{done: todo.completed}">{{todo.todo}}</span> -->
       <span
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style>
-span {
+.list span {
   cursor: pointer;
   user-select: none;
 }
