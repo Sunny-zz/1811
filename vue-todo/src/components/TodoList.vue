@@ -24,6 +24,10 @@ export default {
         ? this.todos.filter(todo => !todo.completed)
         : this.todos.filter(todo => todo.completed);
     }
+    // xiugai(){
+    //   // axios.patch('xxxxx/id',{done: true}).then(res => {
+    //   // })
+    // }
   }
 };
 </script>

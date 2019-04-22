@@ -2,12 +2,13 @@
   <div>
     <h1>Todo</h1>
     <TodoHead @addTodo="addTodo"/>
-    <TodoList
+    <!-- <TodoList
       @changeCompleted="changeCompleted"
       @deleteTodo="deleteTodo"
       :todos="todos"
       :filterType="filterType"
-    />
+    />-->
+
     <TodoFooter
       :todos="todos"
       @changeFilterType="changeFilterType"
