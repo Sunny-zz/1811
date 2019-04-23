@@ -16,6 +16,13 @@ export default {
       posts: null
     };
   },
+
+  watch: {
+    // 监听的对象内 属性名加引号可以直接写 js 而且想要获取该组件相关的内容是不惜要加 this
+    "$route.path": function() {
+      // 根据页面的地址获取对应的数据更新 data
+    }
+  },
   created() {
     // get 方法传递参数
     // 一般都是传递给后台做筛选
