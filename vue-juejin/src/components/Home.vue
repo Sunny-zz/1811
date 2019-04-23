@@ -28,18 +28,18 @@ export default {
 </script>
 
 <style>
-.home ul {
+.home > ul {
   display: flex;
   list-style: none;
   padding: 0;
 }
-.home ul li a {
+.home > ul li a {
   text-decoration: none;
   color: darkgray;
   margin-right: 20px;
 }
 
-.home ul li .router-link-active {
+.home > ul li .router-link-active {
   color: aqua;
 }
 </style>

@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "1212as",
+      "title": "前端1",
+      "postType": "frontend",
+      "isRecommended": true
+    },
+    {
+      "id": "1212a21s",
+      "title": "前端2",
+      "postType": "frontend",
+      "isRecommended": false
+    },
+    {
+      "id": "12121121as",
+      "title": "后端1",
+      "postType": "backend",
+      "isRecommended": true
+    },
+    {
+      "id": "21121as",
+      "title": "后端2",
+      "postType": "backend",
+      "isRecommended": false
+    },
+    {
+      "id": "1212p121as",
+      "title": "杂文1",
+      "postType": "ios",
+      "isRecommended": true
+    },
+    {
+      "id": "121o1121as",
+      "title": "杂文2",
+      "postType": "android",
+      "isRecommended": true
+    }
+  ]
+}

@@ -3,7 +3,6 @@ import VueRouter from "vue-router"
 import Home from "./components/Home"
 import Pins from "./components/Pins"
 import Topics from "./components/Topics"
-import Recommended from "./components/Recommended"
 import List from "./components/List"
 import ListContent from "./components/ListContent"
 Vue.use(VueRouter)
@@ -19,17 +18,21 @@ const routes = [
       //  子路由的 path 为空就相当于 父级路由匹配
       {
         path: "",
-        component: Recommended
+        component: ListContent
       },
       {
         path: "welcome/recommended",
-        component: Recommended
+        component: ListContent
       },
       {
         // 动态路由
         path: "welcome/:type",
         component: List,
         children: [
+          {
+            path: "",
+            component: ListContent
+          },
           {
             path: ":leibie",
             component: ListContent
