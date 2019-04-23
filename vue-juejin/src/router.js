@@ -5,6 +5,7 @@ import Pins from "./components/Pins"
 import Topics from "./components/Topics"
 import Recommended from "./components/Recommended"
 import List from "./components/List"
+import ListContent from "./components/ListContent"
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,7 +28,13 @@ const routes = [
       {
         // 动态路由
         path: "welcome/:type",
-        component: List
+        component: List,
+        children: [
+          {
+            path: ":leibie",
+            component: ListContent
+          }
+        ]
       }
     ]
   },
