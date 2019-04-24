@@ -13,6 +13,9 @@ export default {
   name: "app",
   components: {
     Header
+  },
+  created() {
+    console.log(this.$route);
   }
 };
 </script>

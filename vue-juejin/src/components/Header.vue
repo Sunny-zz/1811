@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <img src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt>
+    <img src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" @click="returnHome" alt>
     <!-- 当链接为 welcome/xxx 的时候我的首页link的匹配规则需是不严格匹配，而其他情况需要严格匹配 -->
     <!-- 获取页面的当前路径 通过路由的一些属性 -->
     <!-- vue 路由我们有两种获取路由信息的属性 -->
@@ -20,6 +20,18 @@ export default {
   computed: {
     isExact() {
       return this.$route.path.indexOf("welcome") === -1 ? true : false;
+    }
+  },
+  methods: {
+    returnHome() {
+      // router-link   to='/'
+      // this.$route
+      // this.$router
+      // console.log(this.$route);
+      // console.log(this.$router);
+      // 路由本身自带一些历史纪录的跳转
+      // back  go  push forward
+      this.$router.push("/");
     }
   }
 };

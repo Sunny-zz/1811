@@ -5,6 +5,7 @@ import Pins from "./components/Pins"
 import Topics from "./components/Topics"
 import List from "./components/List"
 import ListContent from "./components/ListContent"
+import Error404 from "./components/Error404"
 Vue.use(VueRouter)
 
 const routes = [
@@ -48,6 +49,11 @@ const routes = [
   {
     path: "/topics",
     component: Topics
+  },
+  // /* 匹配所有地址
+  {
+    path: "/*",
+    component: Error404
   }
 ]
 
