@@ -5,6 +5,18 @@
     <transition name="fade" appear>
       <p class="test" v-show="show">hello</p>
     </transition>
+    <div>
+      <input type="text" v-model="val">
+      <button @click="add">添加</button>
+      <ul>
+        <transition-group name="list" appear>
+          <li v-for="user in users" :key="user.id">
+            {{user.username}}
+            <button @click="del(user.id)">删除</button>
+          </li>
+        </transition-group>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -13,8 +25,31 @@ export default {
   name: "app",
   data() {
     return {
-      show: true
+      show: true,
+      val: "",
+      users: [
+        {
+          id: "12",
+          username: "小花儿"
+        },
+        {
+          id: "34",
+          username: "小黑"
+        }
+      ]
     };
+  },
+  methods: {
+    add() {
+      const val = this.val;
+      if (val.trim()) {
+        this.users.push({
+          id: new Date().getTime(),
+          username: val
+        });
+        this.val = "";
+      }
+    }
   }
 };
 </script>
@@ -56,5 +91,14 @@ export default {
   100% {
     transform: scale(0);
   }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 2s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
 }
 </style>
