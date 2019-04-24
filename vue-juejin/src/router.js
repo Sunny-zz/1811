@@ -43,17 +43,25 @@ const routes = [
     ]
   },
   {
-    path: "/pins",
+    path: "/feidian",
     component: Pins
+  },
+  {
+    path: "/pins",
+    redirect: "/feidian"
   },
   {
     path: "/topics",
     component: Topics
   },
+  {
+    path: "/error",
+    component: Error404
+  },
   // /* 匹配所有地址
   {
     path: "/*",
-    component: Error404
+    redirect: "/error"
   }
 ]
 
