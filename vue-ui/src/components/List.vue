@@ -1,6 +1,6 @@
 <template>
   <div v-if="posts">
-    <ul>
+    <ul class="list">
       <li v-for="post in showPosts" :key="posts.id">{{post.title}}</li>
     </ul>
     <!-- 分页器 -->
@@ -12,11 +12,11 @@
       @current-change="changePage"
     ></el-pagination>
   </div>
-  <div v-else>请稍等。。。</div>
 </template>
 
 <script>
 import axios from "axios";
+import { Loading } from "element-ui";
 export default {
   name: "list",
   data() {
@@ -33,8 +33,20 @@ export default {
   },
   created() {
     // 发送请求获取数据
+    // 执行 loading
+    // service 后面的参数 相当给 loading 的配置(loading 的样子)
+    let loadingInstance = Loading.service({
+      text: "Loading...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     axios.get("http://jsonplaceholder.typicode.com/posts").then(res => {
-      this.posts = res.data;
+      setTimeout(() => {
+        this.posts = res.data;
+        // 关闭 loading
+        loadingInstance.close();
+      }, 1000);
     });
   },
   methods: {
@@ -46,4 +58,7 @@ export default {
 </script>
 
 <style>
+.list li {
+  margin-bottom: 20px;
+}
 </style>
