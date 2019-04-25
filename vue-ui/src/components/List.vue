@@ -9,34 +9,38 @@
       layout="prev,pager, next ,jumper"
       :total="posts.length"
       :page-size="10"
+      @current-change="changePage"
     ></el-pagination>
   </div>
-  <div v-else>请稍等...</div>
+  <div v-else>请稍等。。。</div>
 </template>
 
 <script>
 import axios from "axios";
-
 export default {
   name: "list",
   data() {
     return {
-      posts: null
-      // pageSize: 1
+      posts: null,
+      pageSize: 1
     };
   },
   computed: {
     showPosts() {
       // 0 - 10    10  20
-      return this.posts.slice(0, 10);
+      return this.posts.slice((this.pageSize - 1) * 10, this.pageSize * 10);
     }
   },
   created() {
     // 发送请求获取数据
-
     axios.get("http://jsonplaceholder.typicode.com/posts").then(res => {
       this.posts = res.data;
     });
+  },
+  methods: {
+    changePage(page) {
+      this.pageSize = page;
+    }
   }
 };
 </script>
