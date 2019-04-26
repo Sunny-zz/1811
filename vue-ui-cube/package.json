@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "cube-ui": "~1.12.15",
+    "echarts": "^4.2.1",
     "vue": "^2.6.6"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cube-button style="width: 100px">Button</cube-button>
+    <!-- <cube-button style="width: 100px">Button</cube-button>
     <cube-button @click="add" style="width: 100px">更新 picker</cube-button>
     <cube-button @click="showPicker">Picker</cube-button>
     <div class="swipe-wrapper">
@@ -12,15 +12,25 @@
           :autoShrink="true"
         ></cube-swipe>
       </cube-scroll>
+    </div>-->
+    <div>
+      <!-- v-html 指令 作用当后台传递过来数据 <span>hello</span> 想要展示到页面的话使用 v-html -->
+      <h1 v-html="text"></h1>
     </div>
+    <EchartsDemo/>
   </div>
 </template>
 
 <script>
+import EchartsDemo from "./components/EchartsDemo";
 export default {
   name: "app",
+  components: {
+    EchartsDemo
+  },
   data() {
     return {
+      text: "hellos",
       heros: [{ title: "1" }, { title: "2" }, { title: "3" }],
       lists: [
         {
@@ -63,15 +73,15 @@ export default {
     }
   },
   created() {
-    this.picker = this.$createPicker({
-      title: "picker",
-      data: [this.heros],
-      alias: {
-        text: "title",
-        value: "title"
-      },
-      onSelect: this.selectHandle
-    });
+    // this.picker = this.$createPicker({
+    //   title: "picker",
+    //   data: [this.heros],
+    //   alias: {
+    //     text: "title",
+    //     value: "title"
+    //   },
+    //   onSelect: this.selectHandle
+    // });
   },
   methods: {
     showPicker() {
