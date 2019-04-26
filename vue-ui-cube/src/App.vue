@@ -1,6 +1,7 @@
 <template>
   <div>
     <cube-button style="width: 100px">Button</cube-button>
+    <cube-button @click="add" style="width: 100px">更新 picker</cube-button>
     <cube-button @click="showPicker">Picker</cube-button>
   </div>
 </template>
@@ -10,13 +11,18 @@ export default {
   name: "app",
   data() {
     return {
-      heros: [{ text: "1" }, { text: "2" }, { text: "3" }]
+      heros: [{ title: "1" }, { title: "2" }, { title: "3" }]
     };
   },
   created() {
     this.picker = this.$createPicker({
-      title: "Picker",
-      data: [this.heros]
+      title: "picker",
+      data: [this.heros],
+      alias: {
+        text: "title",
+        value: "title"
+      },
+      onSelect: this.selectHandle
     });
   },
   methods: {
@@ -25,6 +31,15 @@ export default {
       // if (!this.picker) {
       // }
       this.picker.show();
+    },
+    selectHandle(a) {
+      // selectHandle 函数默认接受三个参数  1.选择到的 value 值   2. 索引   3. text 值
+      console.log(a);
+    },
+    add() {
+      this.picker.$updateProps({
+        title: "xxx"
+      });
     }
   }
 };
