@@ -80,11 +80,12 @@ export default {
 <style lang="scss" scoped>
 // scoped 样式变成局部的  给当前组建的所有标签都加上 data-v-xxx 属性 样式写成 h3[data-v-xxx]
 @import "../assets/color.scss";
-.wrap .el-pagination.is-background .el-pager li:not(.disabled).active {
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: teal;
   color: pink;
 }
-.wrap .el-pagination.is-background .el-pager li:not(.disabled):hover {
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
   color: brown;
 }
 .el-carousel__item h3 {
