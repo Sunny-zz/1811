@@ -18,6 +18,18 @@
       @current-change="changePage"
     ></el-pagination>
     <!-- 点击某一个的时候 必须得知道 点的是第几页，而且点击页码的时候做一些事情 -->
+    <el-carousel
+      :interval="4000"
+      type="card"
+      height="200px"
+      style="width:1000px"
+      :autoplay="false"
+      trigger="click"
+    >
+      <el-carousel-item v-for="item in 10" :key="item">
+        <h3 class="medium">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
   </div>
 </template>
 
@@ -66,5 +78,20 @@ export default {
 }
 .wrap .el-pagination.is-background .el-pager li:not(.disabled):hover {
   color: brown;
+}
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>
