@@ -70,8 +70,13 @@ export default {
     }
   }
 };
+/* 在 vue 的项目中使用 sass */
+// 1. 安装 sass-loader  node-sass    npm i sass-loader  node-sass -D
+/* 在 style 标签内写上一个属性  */
 </script>
-<style>
+
+<style lang="scss">
+@import "../assets/color.scss";
 .wrap .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: teal;
   color: pink;
@@ -92,6 +97,9 @@ export default {
 }
 
 .el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+  background-color: $color;
 }
 </style>
+
+
+
