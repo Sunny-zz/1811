@@ -30,6 +30,7 @@
         <h3 class="medium">{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
+    <h3>hello</h3>
   </div>
 </template>
 
@@ -75,7 +76,9 @@ export default {
 /* 在 style 标签内写上一个属性  */
 </script>
 
-<style lang="scss">
+
+<style lang="scss" scoped>
+// scoped 样式变成局部的  给当前组建的所有标签都加上 data-v-xxx 属性 样式写成 h3[data-v-xxx]
 @import "../assets/color.scss";
 .wrap .el-pagination.is-background .el-pager li:not(.disabled).active {
   background-color: teal;
@@ -98,6 +101,12 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: $color;
+}
+h3 {
+  color: red;
+  &:hover {
+    color: blue;
+  }
 }
 </style>
 
