@@ -8,7 +8,7 @@
         <span>{{cart.cartQuantityById[item]}}</span>
       </li>
     </ul>
-    <p>total:0</p>
+    <p>total:￥{{total}}</p>
   </div>
   <div v-else>买点吧...</div>
 </template>
@@ -23,7 +23,27 @@
 // console.log(obj[a]);
 export default {
   name: "cart",
-  props: ["goodsList", "cart"]
+  props: ["goodsList", "cart"],
+  computed: {
+    total() {
+      const { cartListId, cartQuantityById } = this.cart;
+      // let total = 0;
+      // cartListId.forEach(id => {
+      //   total =
+      //     total +
+      //     this.goodsList.find(item => item.id === id).price *
+      //       cartQuantityById[id];
+      // });
+      const total = cartListId.reduce(
+        (result, id) =>
+          result +
+          this.goodsList.find(item => item.id === id).price *
+            cartQuantityById[id],
+        0
+      );
+      return total.toFixed(2);
+    }
+  }
 };
 </script>
 

@@ -7,7 +7,7 @@
     </p>
     <button @click="$set(test,'name','222')">按钮</button>
     <hr>
-    <GoodsList :goodsList="goodsList" @addToCart="addToCart"/>
+    <GoodsList :goodsList="goodsList" @addToCart="addToCart" :cart="cart"/>
     <hr>
     <Cart :goodsList="goodsList" :cart="cart"></Cart>
   </div>
@@ -51,7 +51,9 @@ export default {
         // cartListId 代表的是买了的商品的 id 数组
         // cartQuantityById 对应 id 商品的购买数量
         cartListId: [],
-        cartQuantityById: {}
+        cartQuantityById: {
+          "1": 67
+        }
       }
     };
   },
