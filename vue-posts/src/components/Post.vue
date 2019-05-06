@@ -7,7 +7,10 @@
       <input type="text" v-model="val">
       <button @click="add">添加</button>
       <ul v-if="comments.length">
-        <li v-for="comment in comments" :key="comment.id">{{comment.text}}</li>
+        <li v-for="comment in comments" :key="comment.id">
+          {{comment.text}}
+          <button @click="del(comment.id)">del</button>
+        </li>
       </ul>
       <div v-else>评论为空</div>
     </div>
@@ -54,6 +57,11 @@ export default {
             this.val = "";
           });
       }
+    },
+    del(id) {
+      axios.delete(`http://localhost:3008/comments/${id}`).then(res => {
+        this.comments = this.comments.filter(comment => comment.id != id);
+      });
     }
   }
 };
