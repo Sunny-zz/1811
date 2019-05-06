@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "vue",
+      "body": "dasas"
+    },
+    {
+      "id": "2",
+      "title": "react",
+      "body": "das122as"
+    }
+  ],
+  "comments": [
+    {
+      "id": "121312",
+      "text": "6666",
+      "postId": "1"
+    },
+    {
+      "id": "sas1122",
+      "text": "777",
+      "postId": "1"
+    },
+    {
+      "id": "121389hhd12",
+      "text": "888",
+      "postId": "2"
+    },
+    {
+      "text": "555",
+      "postId": "1",
+      "id": "NCPeVbI"
+    },
+    {
+      "text": "444",
+      "postId": "1",
+      "id": "nw0Sy1Z"
+    },
+    {
+      "text": "999",
+      "postId": "2",
+      "id": "dwejpcZ"
+    }
+  ]
+}
