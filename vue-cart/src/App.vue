@@ -2,9 +2,9 @@
   <div>
     <h1>vue shopping cart</h1>
     <hr>
-    <GoodsList :goodsList="goodsList"/>
+    <GoodsList :goodsList="goodsList" @addToCart="addToCart"/>
     <hr>
-    <Cart :goodsList="goodsList" :cart="cart"/>
+    <Cart :goodsList="goodsList" :cart="cart"></Cart>
   </div>
 </template>
 
@@ -42,13 +42,15 @@ export default {
       cart: {
         // cartListId 代表的是买了的商品的 id 数组
         // cartQuantityById 对应 id 商品的购买数量
-        cartListId: ["2", "1"],
-        cartQuantityById: {
-          "1": 4,
-          "2": 3
-        }
+        cartListId: [],
+        cartQuantityById: {}
       }
     };
+  },
+  methods: {
+    addToCart(id) {
+      console.log(id);
+    }
   }
 };
 </script>

@@ -4,7 +4,7 @@
       <span style="margin-right: 20px;">{{item.goodsName}}</span>
       <span>￥{{item.price}}</span>
       <br>
-      <button>add to cart</button>
+      <button @click="addToCart(item.id)">add to cart</button>
       <br>
     </li>
   </ul>
@@ -13,7 +13,12 @@
 <script>
 export default {
   name: "goodslist",
-  props: ["goodsList"]
+  props: ["goodsList"],
+  methods: {
+    addToCart(id) {
+      this.$emit("addToCart", id);
+    }
+  }
 };
 </script>
 
