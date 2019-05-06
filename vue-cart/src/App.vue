@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1>vue shopping cart</h1>
+    <h2>测试</h2>
+    <p>
+      <span v-for="(item,j) in test" :key="j">{{j+item}}</span>
+    </p>
+    <button @click="$set(test,'name','222')">按钮</button>
     <hr>
     <GoodsList :goodsList="goodsList" @addToCart="addToCart"/>
     <hr>
@@ -19,6 +24,9 @@ export default {
   },
   data() {
     return {
+      test: {
+        title: "111"
+      },
       goodsList: [
         {
           id: "1",
