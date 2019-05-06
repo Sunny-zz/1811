@@ -5,7 +5,9 @@
         <span>{{goodsList.find(goods => goods.id === item ).goodsName}}</span>
         <span>&nbsp;{{goodsList.find(goods => goods.id === item ).price}}&nbsp;</span>
         <span>&nbsp;&nbsp;x&nbsp;&nbsp;</span>
+        <button>-</button>
         <span>{{cart.cartQuantityById[item]}}</span>
+        <button>+</button>
       </li>
     </ul>
     <p>total:￥{{total}}</p>

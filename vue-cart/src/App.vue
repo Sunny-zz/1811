@@ -51,9 +51,7 @@ export default {
         // cartListId 代表的是买了的商品的 id 数组
         // cartQuantityById 对应 id 商品的购买数量
         cartListId: [],
-        cartQuantityById: {
-          "1": 67
-        }
+        cartQuantityById: {}
       }
     };
   },
@@ -67,10 +65,13 @@ export default {
         cartQuantityById[id] = 1;
       } else {
         cartQuantityById[id]++;
-        this.cart = {
-          cartListId,
-          cartQuantityById
-        };
+        // this.cart = {
+        //   cartListId,
+        //   cartQuantityById
+        // };
+        this.$set(this.cart, "cartQuantityById", {
+          ...cartQuantityById
+        });
       }
     }
   }
