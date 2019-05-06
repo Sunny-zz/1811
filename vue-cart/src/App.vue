@@ -49,7 +49,19 @@ export default {
   },
   methods: {
     addToCart(id) {
-      console.log(id);
+      const { cartListId, cartQuantityById } = this.cart;
+      // indexOf  includes
+      // vue 更新对象的时候，更新已有属性的属性值，虽然能改，但是页面不更新
+      if (cartListId.indexOf(id) === -1) {
+        cartListId.push(id);
+        cartQuantityById[id] = 1;
+      } else {
+        cartQuantityById[id]++;
+        this.cart = {
+          cartListId,
+          cartQuantityById
+        };
+      }
     }
   }
 };
