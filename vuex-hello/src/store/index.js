@@ -11,7 +11,8 @@ const store = new Vuex.Store({
   state: {
     obj: {
       num: 0
-    }
+    },
+    posts: []
   },
   mutations: {
     // 放的是修改 state 的函数(方法)
@@ -29,7 +30,10 @@ const store = new Vuex.Store({
     change(state, num) {
       state.obj.num = num
     }
-  }
+  },
+  // actions 也是用来提交 mutation 的 也是使用 commit 提交的
+  // 由于要异步获取数据修改 state
+  actions: {}
 })
 
 export default store
