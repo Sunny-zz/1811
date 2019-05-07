@@ -23,6 +23,7 @@
 <script>
 // 使用 mapMutations 简化  $store.commit()
 import { mapMutations } from "vuex";
+
 export default {
   name: "app",
   computed: {
@@ -39,12 +40,11 @@ export default {
     //   change: "change"
     // }),
     // 2.数组形式，名字必须一致
-    ...mapMutations(["add", "sub", "change", "getPosts"])
+    ...mapMutations(["add", "sub", "change"])
   },
   created() {
-    axios.get().then(res => {
-      this.getPosts();
-    });
+    // 执行 action
+    this.$store.dispatch("getPosts");
   }
 };
 </script>

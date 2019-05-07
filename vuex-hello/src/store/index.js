@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import axios from "axios"
 Vue.use(Vuex)
 
 // 创建 store(存储共享状态的容器)
@@ -29,11 +30,22 @@ const store = new Vuex.Store({
     // commit 如何传递参数
     change(state, num) {
       state.obj.num = num
+    },
+    getPosts(state, posts) {
+      state.posts = posts
     }
   },
   // actions 也是用来提交 mutation 的 也是使用 commit 提交的
   // 由于要异步获取数据修改 state
-  actions: {}
+  actions: {
+    // action 函数 默认接收一个参数  context 对象，该对象下有一个 commit 方法用来提交 mutation
+    // 怎么触发 action
+    getPosts(context) {
+      axios.get("http://localhost:3000/posts").then(res => {
+        context.commit("getPosts", res.data)
+      })
+    }
+  }
 })
 
 export default store
