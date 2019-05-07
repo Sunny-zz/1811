@@ -7,7 +7,10 @@
         <span>&nbsp;&nbsp;x&nbsp;&nbsp;</span>
         <button @click="$emit('sub',item)">-</button>
         <span>{{cart.cartQuantityById[item]}}</span>
-        <button @click="$emit('addToCart',item)">+</button>
+        <button
+          :disabled="goodsList.find(goods => goods.id === item ).inventory <= cart.cartQuantityById[item]"
+          @click="$emit('addToCart',item)"
+        >+</button>
       </li>
     </ul>
     <p>total:￥{{total}}</p>

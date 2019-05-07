@@ -80,11 +80,12 @@ export default {
       if (cartQuantityById[id] === 0) {
         // 从数组中删除对应的 id,直接删除页面不触发更新，使用 set
         // 从对象中删除对应的属性 delete obj.name
-        cartListId = this.$set(
-          this.cart,
-          "cartListId",
-          cartListId.filter(item => item != id)
-        );
+        // this.$set(
+        //   this.cart,
+        //   "cartListId",
+        //   cartListId.filter(item => item != id)
+        // );
+        cartListId.splice(cartListId.indexOf(id), 1);
         // console.log(cartListId);
         delete cartQuantityById[id];
       } else {
