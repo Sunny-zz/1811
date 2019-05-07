@@ -22,7 +22,7 @@
 </template>
 <script>
 // 使用 mapMutations 简化  $store.commit()
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 
 export default {
   name: "app",
@@ -40,11 +40,19 @@ export default {
     //   change: "change"
     // }),
     // 2.数组形式，名字必须一致
-    ...mapMutations(["add", "sub", "change"])
+    ...mapMutations(["add", "sub", "change"]),
+    ...mapActions(["getPosts"])
   },
   created() {
     // 执行 action
-    this.$store.dispatch("getPosts");
+    // dispatch 发 action 第一种 普通
+    // this.$store.dispatch("getPosts");
+    // dispatch 发 action 第二种 对象
+    // this.$store.dispatch({
+    //   type: "getPosts"
+    // });
+    // 第三种 使用 mapActions 简化
+    this.getPosts();
   }
 };
 </script>

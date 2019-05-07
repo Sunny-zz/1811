@@ -40,9 +40,11 @@ const store = new Vuex.Store({
   actions: {
     // action 函数 默认接收一个参数  context 对象，该对象下有一个 commit 方法用来提交 mutation
     // 怎么触发 action
-    getPosts(context) {
+    // const {commit} = context
+    getPosts({ commit, state }) {
+      // state 代表整个 store 的数据
       axios.get("http://localhost:3000/posts").then(res => {
-        context.commit("getPosts", res.data)
+        commit("getPosts", res.data)
       })
     }
   }
