@@ -9,7 +9,7 @@
     <hr>
     <GoodsList :goodsList="goodsList" @addToCart="addToCart" :cart="cart"/>
     <hr>
-    <Cart :goodsList="goodsList" :cart="cart"></Cart>
+    <Cart :goodsList="goodsList" :cart="cart" @addToCart="addToCart" @sub="sub"></Cart>
   </div>
 </template>
 
@@ -69,6 +69,25 @@ export default {
         //   cartListId,
         //   cartQuantityById
         // };
+        this.$set(this.cart, "cartQuantityById", {
+          ...cartQuantityById
+        });
+      }
+    },
+    sub(id) {
+      let { cartListId, cartQuantityById } = this.cart;
+      cartQuantityById[id]--;
+      if (cartQuantityById[id] === 0) {
+        // 从数组中删除对应的 id,直接删除页面不触发更新，使用 set
+        // 从对象中删除对应的属性 delete obj.name
+        cartListId = this.$set(
+          this.cart,
+          "cartListId",
+          cartListId.filter(item => item != id)
+        );
+        // console.log(cartListId);
+        delete cartQuantityById[id];
+      } else {
         this.$set(this.cart, "cartQuantityById", {
           ...cartQuantityById
         });
