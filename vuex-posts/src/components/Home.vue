@@ -10,9 +10,6 @@
 <script>
 export default {
   name: "home",
-  created() {
-    this.$store.dispatch("getPosts");
-  },
   computed: {
     posts() {
       return this.$store.state.posts;
