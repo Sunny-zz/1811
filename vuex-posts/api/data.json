@@ -4,6 +4,23 @@
       "id": "1112s",
       "title": "vue",
       "body": "vue 666"
+    },
+    {
+      "id": "111212s",
+      "title": "react",
+      "body": "react 666"
+    }
+  ],
+  "comments": [
+    {
+      "id": "22sg76",
+      "text": "666",
+      "postId": "1112s"
+    },
+    {
+      "id": "21232sg76",
+      "text": "777",
+      "postId": "111212s"
     }
   ]
 }

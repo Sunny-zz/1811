@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="post">
     <h2>{{post.title}}</h2>
     <p>{{post.body}}</p>
   </div>
