@@ -13,10 +13,10 @@ export default {
   name: "home",
   computed: {
     // posts() {
-    //   return this.$store.state.posts;
-    // },
+    //   return this.$store.state.posts.all;
+    // }
     ...mapState({
-      posts: "posts"
+      posts: state => state.posts.all
     })
   }
 };
