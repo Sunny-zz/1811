@@ -8,12 +8,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "home",
   computed: {
-    posts() {
-      return this.$store.state.posts;
-    }
+    // posts() {
+    //   return this.$store.state.posts;
+    // },
+    ...mapState({
+      posts: "posts"
+    })
   }
 };
 </script>

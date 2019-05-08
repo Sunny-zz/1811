@@ -8,6 +8,7 @@
 <script>
 import PostBody from "./PostBody";
 import PostComment from "./PostComment";
+import { mapGetters } from "vuex";
 export default {
   name: "post",
   components: {
@@ -17,8 +18,9 @@ export default {
   computed: {
     post() {
       const { id } = this.$route.params;
-      return this.$store.state.posts.find(post => post.id === id);
+      return this.filterPost(id);
     },
+    ...mapGetters(["filterPost"]),
     comments() {
       return this.$store.state.comments;
     }
