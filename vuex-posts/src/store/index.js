@@ -14,6 +14,9 @@ export default new Vuex.Store({
     },
     getComments(state, comments) {
       state.comments = comments
+    },
+    addComment(state, newComment) {
+      state.comments.push(newComment)
     }
   },
   actions: {
@@ -26,6 +29,15 @@ export default new Vuex.Store({
       axios.get(`http://localhost:3008/comments?postId=${id}`).then(res => {
         commit("getComments", res.data)
       })
+    },
+    // action 函数只能接受两个参数
+    addComment({ commit }, payload) {
+      axios
+        .post("http://localhost:3008/comments", payload.newComment)
+        .then(res => {
+          commit("addComment", res.data)
+          payload.clearInput()
+        })
     }
   }
 })
