@@ -1,11 +1,13 @@
 <template>
   <ul v-if="currentTodos">
-    <li v-for="todo in currentTodos" :key="todo.id">{{todo.todo}}</li>
+    <li v-for="todo in currentTodos" :key="todo.id">
+      <span @click="change(todo.id)" :class=" todo.isCompleted ? 'is-completed' : '' ">{{todo.todo}}</span>
+    </li>
   </ul>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "todolist",
   computed: {
@@ -26,10 +28,20 @@ export default {
       return this.$store.getters.currentTodos(this.filter);
     }
     // ...mapState(["todos"])
+  },
+  methods: {
+    ...mapMutations(["change"])
   }
 };
 </script>
 
-<style>
+<style scoped>
+span {
+  user-select: none;
+  cursor: pointer;
+}
+.is-completed {
+  text-decoration: line-through;
+}
 </style>
  
