@@ -17,6 +17,7 @@ export default {
   methods: {
     ...mapMutations(["addTodo"]),
     add() {
+      console.log("111");
       if (this.val.trim()) {
         this.addTodo({
           newTodo: {
