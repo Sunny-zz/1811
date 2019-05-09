@@ -12,6 +12,9 @@ const todos = {
       state.all.find(todo => todo.id === id).isCompleted = !state.all.find(
         todo => todo.id === id
       ).isCompleted
+    },
+    delTodo(state, id) {
+      state.all = state.all.filter(todo => todo.id != id)
     }
   },
   getters: {

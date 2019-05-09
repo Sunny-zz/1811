@@ -2,6 +2,7 @@
   <ul v-if="currentTodos">
     <li v-for="todo in currentTodos" :key="todo.id">
       <span @click="change(todo.id)" :class=" todo.isCompleted ? 'is-completed' : '' ">{{todo.todo}}</span>
+      <button @click="delTodo(todo.id)">删除</button>
     </li>
   </ul>
 </template>
@@ -16,7 +17,6 @@ export default {
       filter: state => state.filter.type
     }),
     currentTodos() {
-      //
       // return this.todos.filter(todo =>
       //   this.filter === "all"
       //     ? true
@@ -30,7 +30,7 @@ export default {
     // ...mapState(["todos"])
   },
   methods: {
-    ...mapMutations(["change"])
+    ...mapMutations(["change", "delTodo"])
   }
 };
 </script>
