@@ -1,6 +1,6 @@
 const filter = {
   state: {
-    filter: "completed"
+    type: "all"
   }
 }
 export default filter

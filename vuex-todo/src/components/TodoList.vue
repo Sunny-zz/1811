@@ -1,6 +1,6 @@
 <template>
-  <ul v-if="todos">
-    <li v-for="todo in todos" :key="todo.id">{{todo.todo}}</li>
+  <ul v-if="currentTodos">
+    <li v-for="todo in currentTodos" :key="todo.id">{{todo.todo}}</li>
   </ul>
 </template>
 
@@ -10,8 +10,20 @@ export default {
   name: "todolist",
   computed: {
     ...mapState({
-      todos: state => state.todos.all
-    })
+      // todos: state => state.todos.all,
+      filter: state => state.filter.type
+    }),
+    currentTodos() {
+      // 通过 todos 模块的 getter 获取正确的展示 todo
+      // return this.todos.filter(todo =>
+      //   this.filter === "all"
+      //     ? true
+      //     : this.filter === "active"
+      //     ? !todo.isCompleted
+      //     : todo.isCompleted
+      // );
+      return this.$store.getters.currentTodos(this.filter);
+    }
     // ...mapState(["todos"])
   }
 };
@@ -19,3 +31,4 @@ export default {
 
 <style>
 </style>
+ 
