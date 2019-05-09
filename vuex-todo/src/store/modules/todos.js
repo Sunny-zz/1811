@@ -15,6 +15,10 @@ const todos = {
     },
     delTodo(state, id) {
       state.all = state.all.filter(todo => todo.id != id)
+    },
+    addTodo(state, payload) {
+      state.all.push(payload.newTodo)
+      payload.clear()
     }
   },
   getters: {

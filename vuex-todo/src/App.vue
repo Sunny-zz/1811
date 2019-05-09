@@ -2,8 +2,8 @@
   <div>
     <h2>Todos</h2>
     <TodoForm/>
-    <TodoList/>
-    <TodoFoot/>
+    <TodoList v-if="todos.length"/>
+    <TodoFoot v-if="todos.length"/>
   </div>
 </template>
 
@@ -13,12 +13,18 @@
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 import TodoFoot from "./components/TodoFoot";
+import { mapState } from "vuex";
 export default {
   name: "app",
   components: {
     TodoForm,
     TodoList,
     TodoFoot
+  },
+  computed: {
+    ...mapState({
+      todos: state => state.todos.all
+    })
   }
 };
 </script>
