@@ -14,7 +14,7 @@ export default {
       filter: state => state.filter.type
     }),
     currentTodos() {
-      // 通过 todos 模块的 getter 获取正确的展示 todo
+      //
       // return this.todos.filter(todo =>
       //   this.filter === "all"
       //     ? true
@@ -22,6 +22,7 @@ export default {
       //     ? !todo.isCompleted
       //     : todo.isCompleted
       // );
+      // 通过 todos 模块的 getter 获取正确的展示 todo
       return this.$store.getters.currentTodos(this.filter);
     }
     // ...mapState(["todos"])
