@@ -2,7 +2,7 @@ import axios from "axios"
 const comments = {
   state: { all: [] },
   getters: {
-    commentNum: state => state.comments.length
+    commentNum: state => state.all.length
   },
   mutations: {
     getComments(state, comments) {

@@ -18,11 +18,12 @@ export default {
   computed: {
     post() {
       const { id } = this.$route.params;
+      console.log(this.filterPost(id));
       return this.filterPost(id);
     },
     ...mapGetters(["filterPost"]),
     comments() {
-      return this.$store.state.comments;
+      return this.$store.state.comments.all;
     }
   },
   created() {

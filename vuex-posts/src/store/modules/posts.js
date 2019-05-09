@@ -6,7 +6,6 @@ const posts = {
   },
   mutations: {
     getPosts(state, posts) {
-      console.log(state)
       state.all = posts
     }
   },
