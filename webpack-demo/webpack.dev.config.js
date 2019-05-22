@@ -1,3 +1,10 @@
+// webpack 的开发环境配置
+// 入口entry(多入口)
+// output(出口)
+// module模块(非js模块)
+// pulgin插件
+
+// 服务配置  devServe
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CleanWebpackPlugin = require("clean-webpack-plugin")
@@ -22,7 +29,7 @@ module.exports = {
     app: "./src/main.js"
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[hash:5].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
   // module 模块
@@ -43,6 +50,18 @@ module.exports = {
         // vue 文件的规则
         test: /\.vue$/,
         use: ["vue-loader"]
+      },
+      // 图片当作模块引入
+      {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },

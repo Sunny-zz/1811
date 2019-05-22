@@ -12,8 +12,10 @@ export default {
 
 <style lang="scss" scoped>
 .hello {
+  display: flex;
   h1 {
     color: red;
+    font-size: 100px;
   }
 }
 </style>
