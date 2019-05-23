@@ -1,0 +1,22 @@
+<!-- pages/test/test.wxml -->
+<view class="box">
+  <button size="mini" type="primary" plain="{{true}}" bind:tap="sub">sub</button>
+  <text>{{num}}</text>
+  <button size="mini" type="primary" plain="{{true}}" bind:tap="add">add</button>
+</view>
+<view class="picture">
+  <button type="primary" size="mini" bindtap="onTap">出现消失</button>
+  <image wx:if="{{show}}" class="pic" src="../../images/timg.jpg" mode="widthFix" />
+</view>
+<!-- 表单 -->
+<view>
+  <!-- 不需要和data 直接挂钩 而是通过js 获取 input 内的输入的值去更改 data -->
+  <!-- input 事件 域的内容发生改变 就会触发 -->
+  <input bindinput="handleInput" focus="{{show}}" />
+</view>
+<view>
+  <view wx:for="{{users}}" wx:key="{{item.id}}">
+    <text>{{item.name}}</text>
+    <button data-id="{{item.id}}" bind:tap="del" size="mini" type="warn">del</button>
+  </view>
+</view>

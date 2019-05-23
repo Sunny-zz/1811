@@ -1,0 +1,15 @@
+/* pages/test/test.wxss */
+.box {
+  display: flex;
+  width: 750rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+.picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pic {
+  width: 600rpx;
+}

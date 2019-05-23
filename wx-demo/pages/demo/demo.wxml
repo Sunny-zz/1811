@@ -1,0 +1,59 @@
+<!-- pages/demo/demo.wxml -->
+<text space="nbsp">demo         demo</text>
+<progress wx:if="{{show}}" percent="80" activeColor='teal' backgroundColor='red' color="yellowgreen" show-info />
+<progress percent="80" stroke-width="12" active color='red' show-info />
+<icon type="success" size="40" />
+<button type="default" size='mini'>default</button>
+<picker mode="date" start="2015-09-01" end="2017-09-01">
+  <view class="picker">当前选择:</view>
+</picker>
+<slider min="50" max="200" show-value="{{false}}" />
+<switch checked />
+<image class='pic' mode='widthFix' src='../../images/timg.jpg'></image>
+<view>
+  <text>{{num}}</text>
+</view>
+<view>
+  <view wx:for="{{arr}}" wx:key="item">
+    <text>{{index}}:{{item}}</text>
+  </view>
+</view>
+<view>
+  <view wx:for="{{arr1}}" wx:key="{{user.id}}" wx:for-item="user" wx:for-index="ind">
+    <text wx:for="{{user.arrNum}}" wx:key="item">{{user.name}}-{{item}}</text>
+  </view>
+</view>
+<scroll-view scroll-y class='wrap'>
+  <view class='box'>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>2</view>
+  </view>
+</scroll-view>

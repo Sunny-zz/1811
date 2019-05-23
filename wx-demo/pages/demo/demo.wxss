@@ -1,0 +1,17 @@
+/* pages/demo/demo.wxss */
+/* 样式单位  rpx  */
+/* 小程序将屏幕尺寸分为 750 rpx */
+/* 样式是局部的 和别的页面不冲突 */
+.wrap{
+  height: 400px;
+  width: 750rpx;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.box{
+  height: 1000px;
+
+}
+.pic{
+  width: 100%;
+}
