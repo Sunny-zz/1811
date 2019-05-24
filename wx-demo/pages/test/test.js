@@ -9,7 +9,7 @@ Page({
   data: {
     num: 10,
     show: false,
-    inputValue: "",
+    inputValue: "1111",
     users: [
       {
         id: "12sd",
@@ -31,8 +31,12 @@ Page({
         name: "zzt3",
         age: 30
       }
-    ]
+    ],
+    imgUrls: []
   },
+  // 256  127
+  // 600rpx  ?
+
   handleInput(event) {
     // 获取 input 的值
     // console.log(event.detail.value)
@@ -63,15 +67,42 @@ Page({
       })
     }
   },
+  // id-one  ----> idOne
   del(event) {
     // 删除数组中的某一项需要 id
-    const { id } = event.currentTarget.dataset
-    console.log(id)
+    const { idOne } = event.currentTarget.dataset
+    this.setData({
+      // filter 的返回值
+      users: this.data.users.filter(user => user.id != idOne)
+    })
+  },
+  addUser() {
+    console.log("11")
+    if (this.data.inputValue.trim()) {
+      const newUser = {
+        id: new Date().getTime(),
+        name: this.data.inputValue,
+        age: 80
+      }
+      const newUsers = [...this.data.users, newUser]
+      this.setData({
+        // push 的返回值
+        users: newUsers,
+        inputValue: ""
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function() {
+    wx.request({
+      url: "https://przpn06co.bkt.clouddn.com/data.json",
+      success(res) {
+        console.log(res.data)
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

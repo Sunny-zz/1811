@@ -1,4 +1,11 @@
 <!-- pages/test/test.wxml -->
+<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}" class="swiper" indicator-color="rgba(255,255,255,0.3)" indicator-active-color="#ffffff">
+  <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image img" mode="widthFix" />
+    </swiper-item>
+  </block>
+</swiper>
 <view class="box">
   <button size="mini" type="primary" plain="{{true}}" bind:tap="sub">sub</button>
   <text>{{num}}</text>
@@ -12,11 +19,15 @@
 <view>
   <!-- 不需要和data 直接挂钩 而是通过js 获取 input 内的输入的值去更改 data -->
   <!-- input 事件 域的内容发生改变 就会触发 -->
-  <input bindinput="handleInput" focus="{{show}}" />
+  <!-- <input bindinput="handleInput" focus="{{show}}" /> -->
 </view>
 <view>
+  <input bindinput="handleInput" value="{{inputValue}}" />
+  <button type="primary" bindtap="addUser">add</button>
   <view wx:for="{{users}}" wx:key="{{item.id}}">
     <text>{{item.name}}</text>
-    <button data-id="{{item.id}}" bind:tap="del" size="mini" type="warn">del</button>
+    <button data-id-one="{{item.id}}" bind:tap="del" size="mini" type="warn">del</button>
   </view>
 </view>
+<!-- 因为有 tabbar 的原因 navigator 的跳转必须加 open-type 属性属性值写为 switchTab -->
+<navigator url="/pages/index/index" open-type="switchTab">跳转到首页</navigator>

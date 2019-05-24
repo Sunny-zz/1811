@@ -13,3 +13,13 @@
 .pic {
   width: 600rpx;
 }
+.swiper {
+  width: 600rpx;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  height: 297rpx;
+}
+.img {
+  width: 100%;
+}
