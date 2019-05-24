@@ -31,3 +31,8 @@
 </view>
 <!-- 因为有 tabbar 的原因 navigator 的跳转必须加 open-type 属性属性值写为 switchTab -->
 <navigator url="/pages/index/index" open-type="switchTab">跳转到首页</navigator>
+<view wx:if="{{posts.length}}" wx:for="{{posts}}" wx:key="{{item.id}}">
+  <navigator url="/pages/post/post?id={{item.id}}">
+    <text>{{item.title}}</text>
+  </navigator>
+</view>

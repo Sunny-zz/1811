@@ -1,0 +1,4 @@
+<!-- pages/post/post.wxml -->
+<view wx:if="{{post}}">
+  <text>{{post.title}}</text>
+</view>

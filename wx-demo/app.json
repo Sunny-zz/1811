@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/demo/demo",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/post/post"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
