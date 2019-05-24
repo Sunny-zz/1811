@@ -4,16 +4,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    post: null
+    post: null,
+    completed: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  jump() {
+    // 判断
+    if (this.data.completed) {
+      // 进行跳转
+      wx.switchTab({
+        url: "/pages/index/index"
+      })
+    }
+  },
+  jumpDemo() {
+    // 判断
+    if (this.data.completed) {
+      // 进行跳转
+      wx.reLaunch({
+        url: "/pages/demo/demo"
+      })
+    }
+  },
+  back() {
+    wx.navigateBack()
+  },
   onLoad: function(options) {
     console.log(options.id)
     // 发请求展示标题
     wx.request({
+      // 方法
+      method: "GET",
+      // 传参
+      data: {},
       url: `https://cnodejs.org/api/v1/topic/${options.id}`,
       success: res => {
         this.setData({

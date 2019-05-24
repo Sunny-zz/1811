@@ -1,0 +1,7 @@
+/* pages/newpage/newpage.wxss */
+.box {
+  width: 750rpx;
+  height: 1000px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

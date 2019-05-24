@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -53,6 +53,13 @@
 					"id": -1,
 					"name": "xxxxx",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "new",
+					"pathName": "pages/newpage/newpage",
 					"scene": null
 				}
 			]

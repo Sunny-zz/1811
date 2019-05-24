@@ -4,14 +4,17 @@
     "pages/logs/logs",
     "pages/demo/demo",
     "pages/test/test",
-    "pages/post/post"
-    
+    "pages/post/post",
+    "pages/newpage/newpage"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#00b3d4",
+    "onReachBottomDistance": 10
   },
   "tabBar": {
     "list": [

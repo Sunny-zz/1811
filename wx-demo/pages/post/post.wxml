@@ -2,3 +2,7 @@
 <view wx:if="{{post}}">
   <text>{{post.title}}</text>
 </view>
+<view wx:else>...</view>
+<button size="mini" type="primary" bind:tap="jump">跳转</button>
+<button size="mini" type="primary" bind:tap="jumpDemo">跳转demo</button>
+<button size="mini" type="primary" bind:tap="back">back</button>

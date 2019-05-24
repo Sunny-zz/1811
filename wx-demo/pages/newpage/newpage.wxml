@@ -1,0 +1,8 @@
+<!-- pages/newpage/newpage.wxml -->
+<view>
+  <view wx:for="{{arr}}" wx:key="item">{{item}}</view>
+</view>
+<view class="box">
+  <view wx:if="{{show}}">请稍等</view>
+</view>
+<image src="{{userInfo.avatarUrl}}" />
