@@ -24,19 +24,19 @@ wind_sc: "3"
 wind_spd: "15" -->
 <view class="section">
   <picker bindchange="changeCity" mode="region">
-    <view class="picker">{{city}}</view>
+    <view class="picker">{{normalWeather.basic.parent_city}}</view>
   </picker>
 </view>
-<block wx:if="{{normalWeather}}">
+<block wx:if="{{normalWeather.now}}">
   <view class="tmp">
-    <text>{{normalWeather.tmp}}℃</text>
+    <text>{{normalWeather.now.tmp}}℃</text>
   </view>
   <view>
-    <text>{{normalWeather.cond_txt}}</text>
+    <text>{{normalWeather.now.cond_txt}}</text>
   </view>
   <view>
-    <text>{{normalWeather.wind_sc}}级</text>
-    <text>{{normalWeather.hum}}%</text>
-    <text>{{normalWeather.pres}}hPa</text>
+    <text>{{normalWeather.now.wind_sc}}级</text>
+    <text>{{normalWeather.now.hum}}%</text>
+    <text>{{normalWeather.now.pres}}hPa</text>
   </view>
 </block>

@@ -8,8 +8,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
     normalWeather: null,
-    airQuantity: null,
-    city: "秦皇岛"
+    airQuantity: null
   },
   //事件处理函数
   onLoad: function() {
@@ -39,33 +38,36 @@ Page({
         }
       })
     }
-    this.getNormalWeather()
+
+    wx.getLocation({
+      type: "wgs84",
+      success: res => {
+        console.log(res)
+        this.getNormalWeather(`${res.longitude},${res.latitude}`)
+      }
+    })
   },
-  getNormalWeather() {
+  getNormalWeather(location) {
     // 获取常规天气
     //
-    const newCity = this.data.city
-      .split(",")
-      .reverse()
-      .toString()
-      .replace("市", "")
+    // const newCity = this.data.city
+    //   .split(",")
+    //   .reverse()
+    //   .toString()
+    //   .replace("市", "")
     wx.request({
-      url: `https://free-api.heweather.net/s6/weather/now?location=${newCity}&key=c35e8d8ac03a41ad9e139de99ffdedc6`,
+      url: `https://free-api.heweather.net/s6/weather/now?location=${location}&key=c35e8d8ac03a41ad9e139de99ffdedc6`,
       success: res => {
         console.log(res.data.HeWeather6[0])
         this.setData({
-          normalWeather: res.data.HeWeather6[0].now
+          normalWeather: res.data.HeWeather6[0]
         })
         wx.stopPullDownRefresh()
       }
     })
   },
   changeCity(event) {
-    // console.log(event.detail.value.reverse().toString())
-    this.setData({
-      city: event.detail.value.slice(1).toString()
-    })
-    this.getNormalWeather()
+    this.getNormalWeather(event.detail.value[1])
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -76,6 +78,6 @@ Page({
     })
   },
   onPullDownRefresh() {
-    this.getNormalWeather()
+    this.getNormalWeather(this.data.normalWeather.basic.parent_city)
   }
 })
