@@ -1,0 +1,40 @@
+<!-- index.wxml -->
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      获取头像昵称
+    </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </block>
+  </view>
+</view> -->
+<!-- cloud: "0"
+cond_code: "100"
+cond_txt: "晴"
+fl: "23"
+hum: "17"
+pcpn: "0.0"
+pres: "1011"
+tmp: "26"
+vis: "16"
+wind_deg: "51"
+wind_dir: "东北风"
+wind_sc: "3"
+wind_spd: "15" -->
+<block wx:if="{{normalWeather}}">
+  <view class="address">
+    <text>{{address}}</text>
+  </view>
+  <view class="tmp">
+    <text>{{normalWeather.tmp}}℃</text>
+  </view>
+  <view>
+    <text>{{normalWeather.cond_txt}}</text>
+  </view>
+  <view>
+    <text>{{normalWeather.wind_sc}}级</text>
+    <text>{{normalWeather.hum}}%</text>
+    <text>{{normalWeather.pres}}hPa</text>
+  </view>
+</block>

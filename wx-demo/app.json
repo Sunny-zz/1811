@@ -5,7 +5,8 @@
     "pages/demo/demo",
     "pages/test/test",
     "pages/post/post",
-    "pages/newpage/newpage"
+    "pages/newpage/newpage",
+    "pages/homework/homework"
   ],
   "window": {
     "backgroundTextStyle": "dark",

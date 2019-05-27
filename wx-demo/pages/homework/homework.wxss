@@ -1,0 +1,32 @@
+/* pages/homework/homework.wxss */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.inner {
+  background-color: #fff;
+  white-space: nowrap;
+}
+.inner view > .img {
+  width: 70px;
+  height: 50px;
+  margin: 0 10px;
+  background-color: #ccc;
+  display: inline-block;
+}
+.slide {
+  width: 120rpx;
+  margin: 0 auto;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #ccc;
+  overflow: hidden;
+}
+.slide > view {
+  width: 60rpx;
+  background-color: teal;
+  height: 4px;
+  border-radius: 2px;
+}

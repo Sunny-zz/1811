@@ -1,0 +1,24 @@
+<view class="header">
+  <scroll-view scroll-x="true" class="inner" bindscroll="scroll" bindscrolltolower="scrolltolower" bindscrolltoupper="scrolltoupper">
+    <view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+    </view>
+    <view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+      <view class="img"></view>
+    </view>
+  </scroll-view>
+  <view class="slide">
+    <view style="margin-left:{{ml}}rpx"></view>
+  </view>
+</view>
+<!-- 540    10 -->
+<!-- 120    x -->
