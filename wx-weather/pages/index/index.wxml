@@ -22,10 +22,12 @@ wind_deg: "51"
 wind_dir: "东北风"
 wind_sc: "3"
 wind_spd: "15" -->
+<view class="section">
+  <picker bindchange="changeCity" mode="region">
+    <view class="picker">{{city}}</view>
+  </picker>
+</view>
 <block wx:if="{{normalWeather}}">
-  <view class="address">
-    <text>{{address}}</text>
-  </view>
   <view class="tmp">
     <text>{{normalWeather.tmp}}℃</text>
   </view>
